@@ -215,6 +215,14 @@ namespace Aura.Mabi.Network
 
 		public const int UnkCutsceneEnd = 0x65DC; // Relatively new? (NA204)
 
+		// [200X00, NA22X (2016-XX-XX)]
+		public const int MabiNovelSubmit = 0x65DD; // (response: you're not an author msgbox) E = response?
+		public const int MabiNovelRead = 0x65DF;
+		public const int MabiNovel = 0x65E0;
+		public const int MabiNovelOpenBoard = 0x65E1;
+		public const int MabiNovelList = 0x65E2;
+		public const int MabiNovelRoyalties = 0x65E3; // (response: you're not an author msgbox)
+
 		// [200100, NA229 (2016-06-16)]
 		public const int RequestNpcNames = 0x65EE;
 		public const int RequestNpcNamesR = 0x65EF;

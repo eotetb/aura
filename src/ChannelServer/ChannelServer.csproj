@@ -120,6 +120,7 @@
     <Compile Include="Network\Sending\Helpers\RegenHelper.cs" />
     <Compile Include="Network\Sending\Helpers\TalentHelper.cs" />
     <Compile Include="Network\Sending\Send.Dungeons.cs" />
+    <Compile Include="Network\Sending\Send.Novel.cs" />
     <Compile Include="Network\Sending\Send.GMCP.cs" />
     <Compile Include="Network\Sending\Send.RolePlaying.cs" />
     <Compile Include="Network\Sending\Send.Parties.cs" />
