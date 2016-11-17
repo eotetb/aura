@@ -303,6 +303,8 @@
     <Compile Include="World\Inventory\CreatureInventory.cs" />
     <Compile Include="World\Inventory\InventoryPockets.cs" />
     <Compile Include="World\Location.cs" />
+    <Compile Include="World\MabiNovel\Novel.cs" />
+    <Compile Include="World\MabiNovel\Page.cs" />
     <Compile Include="World\Party.cs" />
     <Compile Include="World\NormalRegion.cs" />
     <Compile Include="World\PartyManager.cs" />
