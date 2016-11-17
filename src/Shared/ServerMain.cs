@@ -251,6 +251,11 @@ namespace Aura.Shared
 				{
 					this.LoadDb(AuraData.ShopLicenseDb, "db/shop_licenses.txt", reload);
 				}
+
+				if ((toLoad & DataLoad.NovelOptions) != 0)
+				{
+					this.LoadDb(AuraData.NovelOptionDb, "db/noveloptions.txt", reload);
+				}
 			}
 			catch (DatabaseErrorException ex)
 			{
@@ -342,7 +347,7 @@ namespace Aura.Shared
 	/// Used in LoadData, to specify which db files should be loaded.
 	/// </summary>
 	[Flags]
-	public enum DataLoad : uint
+	public enum DataLoad : ulong
 	{
 		//Spawns = 0x01,
 		Skills = 0x02,
@@ -376,8 +381,9 @@ namespace Aura.Shared
 		OptionSets = 0x20000000,
 		Banks = 0x40000000,
 		ShopLicenses = 0x80000000,
+		NovelOptions = 0x100000000,
 
-		All = 0xFFFFFFFF,
+		All = 0xFFFFFFFFFFFFFFFF,
 
 		LoginServer = Features | Races | StatsBase | Cards | Colors | Items | Pets | CharacterStyles,
 		ChannelServer = All,

@@ -69,6 +69,7 @@
     <Compile Include="Database\Fish.cs" />
     <Compile Include="Database\FishingGrounds.cs" />
     <Compile Include="Database\Manuals.cs" />
+    <Compile Include="Database\NovelOptions.cs" />
     <Compile Include="Database\ShopLicenses.cs" />
     <Compile Include="Database\Portals.cs" />
     <Compile Include="Database\Production.cs" />
