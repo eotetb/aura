@@ -62,7 +62,7 @@ namespace Aura.Login.Network.Handlers
 			var race = packet.GetInt();
 			var skinColor = packet.GetByte();
 			var hair = packet.GetInt();
-			var hairColor = packet.GetByte();
+			var hairColor = packet.GetInt(); // [200200, NA247 (2017-03-17)] Changed from byte to int
 			var age = packet.GetByte();
 
 			// [180600, NA187 (25.06.2014)] Changed from byte to short
@@ -159,7 +159,7 @@ namespace Aura.Login.Network.Handlers
 			var faceItem = new Item(character.Face, Pocket.Face, character.SkinColor, 0, 0);
 			items.Add(faceItem);
 
-			var hairItem = new Item(character.Hair, Pocket.Hair, character.HairColor + 0x10000000u, 0, 0);
+			var hairItem = new Item(character.Hair, Pocket.Hair, (uint)character.HairColor + 0x10000000u, 0, 0);
 			if (hairItemData.BeardId != 0)
 			{
 				hairItem.Info.State = (byte)((hairItemData.BeardId >> 0) & 0xFF);
