@@ -468,3 +468,5 @@ petalo/*/run,                  845.000000
 petalo/*/walk,                  53.515000
 grief/*/run,                   116.652000
 grief/*/walk,                  116.652000
+npc_en/*/run,                  373.850600
+npc_en/*/walk,                 207.689200
