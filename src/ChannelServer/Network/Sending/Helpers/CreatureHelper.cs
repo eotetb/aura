@@ -210,6 +210,15 @@ namespace Aura.Channel.Network.Sending.Helpers
 				packet.PutByte(0);					 // ElementFire
 				packet.PutByte(0);					 // ElementIce
 
+				// [200200, NA247 (2017-03-17)] ?
+				{
+					packet.PutFloat(0);
+					packet.PutFloat(0);
+					packet.PutFloat(0);
+					packet.PutFloat(0);
+					packet.PutFloat(0);
+				}
+
 				// [180800, NA196 (14.10.2014)] ?
 				{
 					packet.PutByte(0);
@@ -1101,6 +1110,12 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// [200200, NA242 (2016-12-15)] ?
 			{
 				packet.PutLong(0);
+			}
+
+			// [200200, NA247 (2017-03-17)] ?
+			{
+				packet.PutInt(0);
+				packet.PutInt(0);
 			}
 
 			return packet;
