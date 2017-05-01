@@ -17,7 +17,7 @@ namespace Aura.Login.Database
 		public int Face { get; set; }
 		public byte SkinColor { get; set; }
 		public int Hair { get; set; }
-		public byte HairColor { get; set; }
+		public int HairColor { get; set; }
 		public short EyeType { get; set; }
 		public byte EyeColor { get; set; }
 		public byte MouthType { get; set; }

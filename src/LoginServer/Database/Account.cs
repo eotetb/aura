@@ -156,7 +156,7 @@ namespace Aura.Login.Database
 			Item.GenerateItemColors(ref items, (this.Name + partner.Race + partner.SkinColor + partner.Hair + partner.HairColor + 1 + partner.EyeType + partner.EyeColor + partner.MouthType + partner.Face));
 
 			items.Add(new Item(partner.Face, Pocket.Face, partner.SkinColor, 0, 0));
-			items.Add(new Item(partner.Hair, Pocket.Hair, partner.HairColor + 0x10000000u, 0, 0));
+			items.Add(new Item(partner.Hair, Pocket.Hair, (uint)partner.HairColor + 0x10000000u, 0, 0));
 
 			if (!LoginServer.Instance.Database.CreatePartner(this.Name, partner, items))
 			{
