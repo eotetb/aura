@@ -70,7 +70,7 @@ namespace Aura.Channel.Network.Handlers
 				race = packet.GetInt();
 			var skinColor = packet.GetByte();
 			var hairItemId = packet.GetInt();
-			var hairColor = packet.GetByte();
+			var hairColor = packet.GetInt(); // [200200, NA247 (2017-03-17)] Changed from byte to int
 			var eyeType = packet.GetShort();
 			var eyeColor = packet.GetByte();
 			var mouthType = packet.GetByte();
@@ -259,7 +259,7 @@ namespace Aura.Channel.Network.Handlers
 
 			// Update hair
 			hair.Info.Id = hairItemId;
-			hair.Info.Color1 = hairColor + 0x10000000u;
+			hair.Info.Color1 = (uint)hairColor + 0x10000000u;
 
 			// Reset LastX times
 			var player = (PlayerCreature)creature;

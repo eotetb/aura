@@ -1152,6 +1152,156 @@ namespace Aura.Channel.Network.Handlers
 			}
 		}
 
+		static int x = 0;
+
+		/// <summary>
+		/// Sent when trying to add an item to a collection book.
+		/// </summary>
+		/// <example>
+		/// 001 [0050F0000000063B] Long   : 22781880927520315
+		/// 002 [0050F0000000063C] Long   : 22781880927520316
+		/// </example>
+		[PacketHandler(Op.CollectionAddItem)]
+		public void CollectionAddItem(ChannelClient client, Packet packet)
+		{
+			var bookEntityId = packet.GetLong();
+			var itemEntityId = packet.GetLong();
+
+			var creature = client.GetCreatureSafe(packet.Id);
+			var book = creature.Inventory.GetItemSafe(bookEntityId);
+			var item = creature.Inventory.GetItemSafe(itemEntityId);
+			var max = book.Data.CollectionMax;
+
+			// Check book
+			if (book.Data.CollectionMax == 0)
+			{
+				Log.Warning("CollectionAddItem: User '{0}' tried to add an item to an item that isn't a collection book ({1}).", client.Account.Id, book.Info.Id);
+				Send.CollectionAddItemR(creature, false);
+				return;
+			}
+
+			var script = ChannelServer.Instance.ScriptManager.CollectionBookScripts.Get(book.Info.Id);
+			if (script == null)
+			{
+				Log.Unimplemented("Collection book '{0}'.", book.Info.Id);
+				Send.MsgBox(creature, Localization.Get("This collection book hasn't been implemented yet."));
+				Send.CollectionAddItemR(creature, false);
+				return;
+			}
+
+			var collectionList = book.GetCollectionList();
+			var complete = (collectionList.Count(a => a == '1') >= max);
+			if (complete)
+			{
+				Send.MsgBox(creature, Localization.Get("The collection book is complete."));
+				Send.CollectionAddItemR(creature, false);
+				return;
+			}
+
+			// Check index
+			var itemIndex = script.GetIndex(item);
+			if (itemIndex == -1)
+			{
+				Send.MsgBox(creature, Localization.Get("The item doesn't belong in this collection book."));
+				Send.CollectionAddItemR(creature, false);
+				return;
+			}
+
+			if (itemIndex < 0 || itemIndex > collectionList.Length - 1)
+			{
+				Log.Warning("CollectionAddItem: Invalid index '{0}' for '{1}' in '{2}'.", itemIndex, item.Info.Id, book.Info.Id);
+				Send.MsgBox(creature, Localization.Get("Something went wrong."));
+				Send.CollectionAddItemR(creature, false);
+				return;
+			}
+
+			if (collectionList[itemIndex] == '1')
+			{
+				Send.MsgBox(creature, Localization.Get("This item has already been added to the collection book."));
+				Send.CollectionAddItemR(creature, false);
+				return;
+			}
+
+			// Add item
+			script.OnAdd(creature, book, item);
+			collectionList[itemIndex] = '1';
+
+			// Update items
+			creature.Inventory.Remove(item);
+
+			complete = (collectionList.Count(a => a == '1') >= max);
+			if (complete)
+			{
+				script.OnComplete(creature, book);
+				book.MetaData1.SetByte("COLFLAG", 1); // 1 = can collect
+			}
+
+			book.SetCollectionList(collectionList);
+			Send.ItemUpdate(creature, book);
+
+			// Response
+			Send.CollectionAddItemR(creature, true);
+		}
+
+		/// <summary>
+		/// Sent when claiming the reward for a completed collection book.
+		/// </summary>
+		/// <example>
+		/// 001 [0050F0000000063B] Long   : 22781880927520315
+		/// </example>
+		[PacketHandler(Op.CollectionGetReward)]
+		public void CollectionGetReward(ChannelClient client, Packet packet)
+		{
+			var bookEntityId = packet.GetLong();
+
+			var creature = client.GetCreatureSafe(packet.Id);
+			var book = creature.Inventory.GetItemSafe(bookEntityId);
+			var max = book.Data.CollectionMax;
+
+			// Check book
+			if (book.Data.CollectionMax == 0)
+			{
+				Log.Warning("CollectionGetReward: User '{0}' tried to claim a reward for an item that isn't a collection book ({1}).", client.Account.Id, book.Info.Id);
+				Send.CollectionGetRewardR(creature, false);
+				return;
+			}
+
+			if (book.MetaData1.GetByte("COLFLAG") == 3)
+			{
+				Send.MsgBox(creature, Localization.Get("The reward has been collected already."));
+				Send.CollectionGetRewardR(creature, false);
+				return;
+			}
+
+			var script = ChannelServer.Instance.ScriptManager.CollectionBookScripts.Get(book.Info.Id);
+			if (script == null)
+			{
+				Log.Unimplemented("Collection book '{0}'.", book.Info.Id);
+				Send.MsgBox(creature, Localization.Get("This collection book hasn't been implemented yet."));
+				Send.CollectionGetRewardR(creature, false);
+				return;
+			}
+
+			var collectionList = book.GetCollectionList();
+			var complete = (collectionList.Count(a => a == '1') >= max);
+			if (!complete)
+			{
+				Send.MsgBox(creature, Localization.Get("The collection book is not complete."));
+				Send.CollectionGetRewardR(creature, false);
+				return;
+			}
+
+			// Reward
+			script.OnReward(creature, book);
+
+			// Update items
+			book.MetaData1.SetByte("COLFLAG", 3); // 3 = collected
+			Send.ItemUpdate(creature, book);
+
+			// Response
+			Send.CollectionGetRewardR(creature, true);
+		}
+
 		/// <summary>
 		/// Sent when using an Ordinary Chest.
 		/// </summary>

@@ -278,24 +278,25 @@ namespace Aura.Channel.Network.Handlers
 			var pet = creature.Pet;
 			var shop = creature.Temp.ActivePersonalShop;
 
-			// Check shop
-			if (shop == null)
-			{
-				Log.Warning("PersonalShopPetProtectRequest: User '{0}' tried to set protection pet a non-existent shop.", client.Account.Id);
-				Send.PersonalShopTakeDownR(creature, false);
-				return;
-			}
-
-			// Check pet
-			if (pet == null)
-			{
-				Log.Warning("PersonalShopPetProtectRequest: User '{0}' tried to set a non-existent pet to protect the shop.", client.Account.Id);
-				Send.PersonalShopTakeDownR(creature, false);
-				return;
-			}
-
-			Send.MsgBox(creature, Localization.Get("This feature is not available yet."));
+			if (creature.Master != null)
+				Send.MsgBox(creature.Master, Localization.Get("This feature is not available yet."));
 			Send.PersonalShopPetProtectRequestR(creature, false);
+
+			//// Check shop
+			//if (shop == null)
+			//{
+			//	Log.Warning("PersonalShopPetProtectRequest: User '{0}' tried to set protection pet for a non-existent shop.", client.Account.Id);
+			//	Send.PersonalShopPetProtectRequestR(creature, false);
+			//	return;
+			//}
+
+			//// Check pet
+			//if (pet == null)
+			//{
+			//	Log.Warning("PersonalShopPetProtectRequest: User '{0}' tried to set a non-existent pet to protect the shop.", client.Account.Id);
+			//	Send.PersonalShopPetProtectRequestR(creature, false);
+			//	return;
+			//}
 		}
 
 		/// <summary>

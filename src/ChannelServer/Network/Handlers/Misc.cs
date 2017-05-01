@@ -568,5 +568,38 @@ namespace Aura.Channel.Network.Handlers
 			//     005 [........00000001] Int    : 1 // count
 			//         006 [..............00] Byte   : 0
 		}
+
+		/// <summary>
+		/// ? (dummy)
+		/// </summary>
+		/// <remarks>
+		/// Sent shortly after login, together with homestead info request.
+		/// Potentially related to the Potential System.
+		/// </remarks>
+		/// <example>
+		/// No parameters.
+		/// </example>
+		[PacketHandler(Op.UnkRequest)]
+		public void UnkRequest(ChannelClient client, Packet packet)
+		{
+			var creature = client.GetCreatureSafe(packet.Id);
+
+			Send.UnkRequestR(creature);
+		}
+
+		/// <summary>
+		/// ? (dummy)
+		/// </summary>
+		/// <remarks>
+		/// Sent when opening the char window, potentially a request
+		/// for information? Maybe Potential System related?
+		/// </remarks>
+		/// <example>
+		/// No parameters.
+		/// </example>
+		[PacketHandler(Op.UnkCharWindow)]
+		public void UnkCharWindow(ChannelClient client, Packet packet)
+		{
+		}
 	}
 }
