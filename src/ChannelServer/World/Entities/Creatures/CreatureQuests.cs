@@ -3,7 +3,9 @@
 
 using Aura.Channel.Network.Sending;
 using Aura.Channel.Util;
+using Aura.Channel.World.Inventory;
 using Aura.Channel.World.Quests;
+using Aura.Data;
 using Aura.Mabi;
 using Aura.Mabi.Const;
 using Aura.Shared.Util;
@@ -415,7 +417,23 @@ namespace Aura.Channel.World.Entities.Creatures
 					if (collectObjective == null)
 						break;
 
-					_creature.Inventory.Remove(collectObjective.ItemId, Math.Min(collectObjective.Amount, progress.Count));
+					var itemId = collectObjective.ItemId;
+					var itemData = AuraData.ItemDb.Find(itemId);
+					var removeCount = Math.Min(collectObjective.Amount, progress.Count);
+
+					// Remove stackable items normally, but make sure the
+					// items are finished for non-stackables, like PTJ
+					// tailor work.
+					if (itemData.StackType != StackType.None)
+					{
+						_creature.Inventory.Remove(itemId, removeCount);
+					}
+					else
+					{
+						var items = _creature.Inventory.GetItems(item => item.Info.Id == itemId && !item.IsIncomplete, StartAt.BottomRight);
+						for (int j = 0; j < removeCount; ++j)
+							_creature.Inventory.Remove(items[j]);
+					}
 				}
 
 				ChannelServer.Instance.Events.OnPlayerCompletesQuest(_creature, quest.Id);
