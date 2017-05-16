@@ -86,6 +86,10 @@ namespace Aura.Data.Database
 		public ItemDataTaste Taste { get; set; }
 		public ItemDataProductionBonus ProductionBonus { get; set; }
 
+		public int CollectionMax { get; set; }
+		public int StampPages { get; set; }
+		public int StampMax { get; set; }
+
 		public int ReplaceItemId { get; set; }
 
 		public string OnUse { get; set; }
@@ -253,6 +257,10 @@ namespace Aura.Data.Database
 				info.ProductionBonus.ItemId = productionBonus.ReadInt("item");
 				info.ProductionBonus.Rate = productionBonus.ReadInt("rate");
 			}
+
+			info.CollectionMax = entry.ReadInt("collectionMax");
+			info.StampPages = entry.ReadInt("stampPages");
+			info.StampMax = entry.ReadInt("stampMax");
 
 			info.ReplaceItemId = entry.ReadInt("replaceOnUse");
 
