@@ -24,6 +24,17 @@ namespace Aura.Channel.Scripting
 	}
 
 	/// <summary>
+	/// Collection of collection book scripts.
+	/// </summary>
+	/// <remarks>
+	/// Key: Item id
+	/// Value: Instance of CollectionBookScript
+	/// </remarks>
+	public class CollectionBookScriptCollection : Collection<int, CollectionBookScript>
+	{
+	}
+
+	/// <summary>
 	/// Collection of AI scripts.
 	/// </summary>
 	/// <remarks>
