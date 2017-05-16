@@ -684,6 +684,10 @@ namespace Aura.Mabi.Const
 		DualGunMaxDamage = 0xC3,
 		UnknownKr1 = 0xC4,
 		UnknownKr2 = 0xC5,
+
+		// TODO: Get actual values.
+		CommerceDiscount = 0xFE,
+		CommerceCredibility = 0xFF,
 	}
 
 	/// <summary>

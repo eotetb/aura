@@ -300,6 +300,6 @@ namespace Aura.Mabi.Const
 		/// <summary>
 		/// ? (0x20)
 		/// </summary>
-		Unknown = 0x20,
+		SpecialRangeHit = 0x20,
 	}
 }

@@ -70,6 +70,12 @@ namespace Aura.Mabi.Const
 		public static readonly int UseMagic = 14;
 
 		/// <summary>
+		/// Removes int magic effects?
+		/// string:effectName, short:skillId
+		/// </summary>
+		public static readonly int CancelMagic = 15;
+
+		/// <summary>
 		/// b:type, i|s:song, i:?, si:?, i:?, b:quality?, b:instrument, b:?, b:?, b:loops
 		/// </summary>
 		public static readonly int PlayMusic = 17;
@@ -204,6 +210,11 @@ namespace Aura.Mabi.Const
 		/// int:0|2|3 (cancel | charging effect | shooting effect [position.x, position.y])
 		/// </summary>
 		public static readonly int LightningRod = 418;
+
+		/// <summary>
+		/// Effects for The Fake Spiral Sword
+		/// </summary>
+		public static readonly int TheFakeSpiralSword = 430;
 	}
 
 	public enum SpawnEffect : byte
@@ -254,5 +265,58 @@ namespace Aura.Mabi.Const
 		Fail = 2,
 		Success = 4,
 		HugeSuccess = 8,
+	}
+
+	/// <summary>
+	/// Effect parameters for Effect "LightningRod"
+	/// </summary>
+	public static class LightningRodEffect
+	{
+		/// <summary>
+		/// Cancels the entire effect
+		/// </summary>
+		public const int Cancel = 0;
+
+		/// <summary>
+		/// Contains magic circle and lightning ball.
+		/// </summary>
+		public const int Prepare = 2;
+
+		/// <summary>
+		/// Burst of lightning; the effect for the attack.
+		/// </summary>
+		public const int Attack = 3;
+	}
+
+	/// <summary>
+	/// Effect parameters for Effect "TheFakeSpiralSword"
+	/// </summary>
+	public static class TheFakeSpiralSwordEffect
+	{
+		/// <summary>
+		/// Preparation effect for the skill
+		/// </summary>
+		public const byte Prepare = 1;
+
+		/// <summary>
+		/// Unknown effect, but it is used when
+		/// readying The Fake Spiral Sword
+		/// </summary>
+		public const byte Ready = 2;
+
+		/// <summary>
+		/// Explosion effect
+		/// </summary>
+		public const byte Attack = 3;
+
+		/// <summary>
+		/// Completion effect
+		/// </summary>
+		public const byte Complete = 4;
+
+		/// <summary>
+		/// Cancels the entire effect
+		/// </summary>
+		public const byte Cancel = 6;
 	}
 }
