@@ -30,6 +30,11 @@ namespace Aura.Channel.Scripting
 		public ItemScriptCollection ItemScripts { get; private set; }
 
 		/// <summary>
+		/// Collection book scripts loaded by the channel
+		/// </summary>
+		public CollectionBookScriptCollection CollectionBookScripts { get; private set; }
+
+		/// <summary>
 		/// AI scripts loaded by the channel
 		/// </summary>
 		public AiScriptCollection AiScripts { get; private set; }
@@ -70,6 +75,7 @@ namespace Aura.Channel.Scripting
 		public ScriptManager()
 		{
 			this.ItemScripts = new ItemScriptCollection();
+			this.CollectionBookScripts = new CollectionBookScriptCollection();
 			this.AiScripts = new AiScriptCollection();
 			this.NpcShopScripts = new NpcShopScriptCollection();
 			this.QuestScripts = new QuestScriptCollection();
