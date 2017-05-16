@@ -6,6 +6,7 @@ using Aura.Channel.Skills;
 using Aura.Channel.Skills.Base;
 using Aura.Channel.Skills.Combat;
 using Aura.Channel.Skills.Life;
+using Aura.Channel.Skills.Magic;
 using Aura.Channel.World;
 using Aura.Channel.World.Entities;
 using Aura.Data;
@@ -1722,6 +1723,14 @@ namespace Aura.Channel.Scripting.Scripts
 				handler.Use(this.Creature, this.Creature.Skills.ActiveSkill, targetAreaEntityId);
 				this.SharpMind(activeSkillId, SharpMindStatus.Cancelling);
 			}
+			else if (activeSkillId == SkillId.Fireball)
+			{
+				var target = this.Creature.Target;
+
+				var handler = ChannelServer.Instance.SkillManager.GetHandler<Fireball>(activeSkillId);
+				handler.Use(this.Creature, this.Creature.Skills.ActiveSkill, target.EntityId, 0, 0);
+				this.SharpMind(activeSkillId, SharpMindStatus.Cancelling);
+			}
 			else
 			{
 				Log.Unimplemented("AI.UseSkill: Skill '{0}'", activeSkillId);
@@ -2019,6 +2028,22 @@ namespace Aura.Channel.Scripting.Scripts
 
 			Send.CreatureFaceUpdate(this.Creature);
 			Send.StatUpdate(this.Creature, StatUpdateType.Public, Stat.SkinColor);
+
+			yield break;
+		}
+		
+		/// <summary>
+		/// Sets the colors of the creature controlled by the AI.
+		/// </summary>
+		/// <param name="color"></param>
+		/// <returns></returns>
+		protected IEnumerable SetColor(uint color1, uint color2, uint color3)
+		{
+			this.Creature.Color1 = color1;
+			this.Creature.Color2 = color2;
+			this.Creature.Color3 = color3;
+
+			Send.CreatureFaceUpdate(this.Creature);
 
 			yield break;
 		}
