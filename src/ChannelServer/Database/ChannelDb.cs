@@ -550,6 +550,10 @@ namespace Aura.Channel.Database
 				character.Keywords.Add("portal_belfast");
 				character.Keywords.Add("portal_dunbarton");
 			}
+
+			// Remove keywords that make the NA client freeze
+			if (character.Keywords.Has("nao_cloth_kimono")) character.Keywords.RemoveSilent("nao_cloth_kimono");
+			if (character.Keywords.Has("nao_yukata")) character.Keywords.RemoveSilent("nao_yukata");
 		}
 
 		/// <summary>
@@ -648,8 +652,8 @@ namespace Aura.Channel.Database
 
 				// Give active Sharp Mind if it's enabled but the character
 				// doesn't have it.
-				if (activeSharpMind && !hasSharpMind)
-					character.Skills.Add(SkillId.SharpMind, SkillRank.Novice, character.RaceId);
+				//if (activeSharpMind && !hasSharpMind)
+				//	character.Skills.Add(SkillId.SharpMind, SkillRank.Novice, character.RaceId);
 
 				character.Skills.Add(SkillId.HiddenEnchant, SkillRank.Novice, character.RaceId);
 				character.Skills.Add(SkillId.HiddenResurrection, SkillRank.Novice, character.RaceId);
