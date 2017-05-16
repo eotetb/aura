@@ -40,6 +40,8 @@ namespace Aura.Channel.World
 
 		protected HashSet<ChannelClient> _clients;
 
+		private object _visibilitySyncLock = new object();
+
 		public RegionInfoData Data { get; protected set; }
 
 		/// <summary>
@@ -391,23 +393,26 @@ namespace Aura.Channel.World
 		/// </summary>
 		private void UpdateVisibility()
 		{
-			_creaturesRWLS.EnterReadLock();
-			try
+			lock (_visibilitySyncLock)
 			{
-				foreach (var creature in _creatures.Values)
+				_creaturesRWLS.EnterReadLock();
+				try
 				{
-					var pc = creature as PlayerCreature;
+					foreach (var creature in _creatures.Values)
+					{
+						var pc = creature as PlayerCreature;
 
-					// Only update player creatures
-					if (pc == null)
-						continue;
+						// Only update player creatures
+						if (pc == null)
+							continue;
 
-					pc.LookAround();
+						pc.LookAround();
+					}
 				}
-			}
-			finally
-			{
-				_creaturesRWLS.ExitReadLock();
+				finally
+				{
+					_creaturesRWLS.ExitReadLock();
+				}
 			}
 		}
 
@@ -813,7 +818,10 @@ namespace Aura.Channel.World
 			// Add collisions
 			this.Collisions.Add(prop);
 
-			//Send.EntityAppears(prop);
+			// Props often times need to be visible on the client immediately,
+			// to apply additional effects for example, so we're gonna
+			// update the visibility here.
+			this.UpdateVisibility();
 		}
 
 		/// <summary>
