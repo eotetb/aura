@@ -50,6 +50,7 @@ namespace Aura.Mabi
 		public void SetString(string key, string val) { this.Set(key, val); }
 		public void SetString(string key, string format, params object[] args) { this.Set(key, string.Format(format, args)); }
 		public void SetBool(string key, bool val) { this.Set(key, val); }
+		public void SetBin(string key, byte[] val) { this.Set(key, val); }
 
 		/// <summary>
 		/// Returns the value with the given key, or null it wasn't found.
@@ -89,6 +90,7 @@ namespace Aura.Mabi
 		public float GetFloat(string key) { return this.Get<float>(key); }
 		public string GetString(string key) { return this.Get<string>(key); }
 		public bool GetBool(string key) { return this.Get<bool>(key); }
+		public byte[] GetBin(string key) { return this.Get<byte[]>(key); }
 
 		/// <summary>
 		/// Removes the value with the given key.
@@ -138,6 +140,7 @@ namespace Aura.Mabi
 			else if (val is float) return "f";
 			else if (val is string) return "s";
 			else if (val is bool) return "b";
+			else if (val is byte[]) return "B";
 			else
 				throw new Exception("Unsupported type '" + val.GetType().ToString() + "'");
 		}
@@ -166,6 +169,8 @@ namespace Aura.Mabi
 					sb.AppendFormat("{0}:{1}:{2};", tag.Key, sType, ((string)tag.Value).Replace(";", "%S").Replace(":", "%C"));
 				else if (sType == "f")
 					sb.AppendFormat("{0}:{1}:{2};", tag.Key, sType, ((float)tag.Value).ToString(CultureInfo.InvariantCulture));
+				else if (sType == "B")
+					sb.AppendFormat("{0}:{1}:{2};", tag.Key, sType, Convert.ToBase64String((byte[])tag.Value));
 				else
 					sb.AppendFormat("{0}:{1}:{2};", tag.Key, sType, tag.Value);
 			}
@@ -201,6 +206,7 @@ namespace Aura.Mabi
 					case "f": this.Set(key, Convert.ToSingle(val, CultureInfo.InvariantCulture)); break;
 					case "s": this.Set(key, val.Replace("%S", ";").Replace("%C", ":")); break;
 					case "b": this.Set(key, val == "1"); break;
+					case "B": this.Set(key, Convert.FromBase64String(val)); break;
 				}
 			}
 		}
