@@ -152,6 +152,7 @@
     <Compile Include="Scripting\Compilers\CSharpPreCompiler.cs" />
     <Compile Include="Scripting\NpcSession.cs" />
     <Compile Include="Scripting\Scripts\AiScript.cs" />
+    <Compile Include="Scripting\Scripts\CollectionBookScript.cs" />
     <Compile Include="Scripting\Scripts\DungeonScript.cs" />
     <Compile Include="Scripting\Scripts\GameEventScript.cs" />
     <Compile Include="Scripting\Scripts\GeneralScript.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Scripting\MagicWordsScript.cs" />
     <Compile Include="Skills\Actions\ContinentWarp.cs" />
     <Compile Include="Skills\Actions\OutfitAction.cs" />
+    <Compile Include="Skills\Actions\SpreadWings.cs" />
     <Compile Include="Skills\Base\CombatSkillHandler.cs" />
     <Compile Include="Skills\Base\Creation.cs" />
     <Compile Include="Skills\Base\Production.cs" />
@@ -173,11 +175,13 @@
     <Compile Include="Skills\Base\StandardPrepareHandler.cs" />
     <Compile Include="Skills\Base\StartStopSkillHandler.cs" />
     <Compile Include="Skills\CombatAction.cs" />
+    <Compile Include="Skills\Combat\TheFakeSpiralSword.cs" />
     <Compile Include="Skills\Combat\CombatMastery.cs" />
     <Compile Include="Skills\Combat\Counterattack.cs" />
     <Compile Include="Skills\Combat\CriticalHit.cs" />
     <Compile Include="Skills\Combat\Defense.cs" />
     <Compile Include="Skills\Combat\FinalHit.cs" />
+    <Compile Include="Skills\Magic\Fireball.cs" />
     <Compile Include="Skills\Combat\GlasGhaibhleannSkill.cs" />
     <Compile Include="Skills\Combat\ManaDeflector.cs" />
     <Compile Include="Skills\Combat\NaturalShield.cs" />
@@ -231,6 +235,7 @@
     <Compile Include="Skills\Magic\Icebolt.cs" />
     <Compile Include="Skills\Magic\ManaShield.cs" />
     <Compile Include="Skills\Magic\SilentMove.cs" />
+    <Compile Include="Skills\Magic\Thunder.cs" />
     <Compile Include="Skills\Music\Composing.cs" />
     <Compile Include="Skills\Music\PlayingInstrument.cs" />
     <Compile Include="Skills\Music\Song.cs" />
