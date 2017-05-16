@@ -474,6 +474,7 @@ namespace Aura.Channel.Network.Sending
 			{
 				packet.PutString(creature.Client.Account.Id);
 				packet.PutInt(0); // item count?
+
 				// for(item count)
 				// {
 				//		Item's ID
@@ -482,6 +483,7 @@ namespace Aura.Channel.Network.Sending
 				// }
 
 				packet.PutInt(0); // index count?
+
 				// for(index count)
 				//{
 				//	packet.PutInt(0);
@@ -531,6 +533,21 @@ namespace Aura.Channel.Network.Sending
 			var packet = new Packet(Op.GameEventStateUpdate, MabiId.Broadcast);
 			packet.PutString(gameEventId);
 			packet.PutByte(isActive);
+			packet.PutInt(0);
+
+			creature.Client.Send(packet);
+		}
+
+		/// <summary>
+		/// Sends dummy of UnkRequestR to creature's client.
+		/// </summary>
+		/// <param name="creature"></param>
+		public static void UnkRequestR(Creature creature)
+		{
+			var packet = new Packet(Op.UnkRequestR, MabiId.Broadcast);
+
+			packet.PutByte(1);
+			packet.PutInt(0);
 			packet.PutInt(0);
 
 			creature.Client.Send(packet);
