@@ -495,8 +495,8 @@ namespace Aura.Login.Network
 		/// <param name="account"></param>
 		private static void Add(this Packet packet, Account account)
 		{
-			packet.PutLong(DateTime.Now);	// Last Login
-			packet.PutLong(DateTime.Now);	// Last Logout
+			packet.PutLong(DateTime.Now);   // Last Login
+			packet.PutLong(DateTime.Now);   // Last Logout
 			packet.PutInt(0);
 			packet.PutByte(1);
 			packet.PutByte(34);
@@ -506,11 +506,11 @@ namespace Aura.Login.Network
 			// Premium services, listed in char selection
 			// --------------------------------------------------------------
 			// All 3 are visible, if one is set.
-			packet.PutByte(false);			// Nao's Support
+			packet.PutByte(false);          // Nao's Support
 			packet.PutLong(0);
-			packet.PutByte(false);			// Extra Storage
+			packet.PutByte(false);          // Extra Storage
 			packet.PutLong(0);
-			packet.PutByte(false);			// Advanced Play
+			packet.PutByte(false);          // Advanced Play
 			packet.PutLong(0);
 
 			packet.PutByte(0);
@@ -538,8 +538,8 @@ namespace Aura.Login.Network
 			}
 
 			packet.PutByte(0);
-			packet.PutByte(0);				// 1: 프리미엄 PC방 서비스 사용중, 16: Free Play Event
-			packet.PutByte(false);			// Free Beginner Service
+			packet.PutByte(0);              // 1: 프리미엄 PC방 서비스 사용중, 16: Free Play Event
+			packet.PutByte(false);          // Free Beginner Service
 
 			// [200100, NA229 (2016-06-16)] ?
 			{
@@ -560,6 +560,13 @@ namespace Aura.Login.Network
 				packet.PutByte(0); // 0: Human, 1: Elf, 2: Giant
 				packet.PutByte(0); // Assist character ?
 				packet.PutByte(0); // >0 hides all characters?
+
+				// [200200, NA252 (2017-05-18)]
+				// Possibly related to the new rebirth timer? Time until
+				// next rebirth? Though it's 0 on NA.
+				{
+					packet.PutLong(0);
+				}
 			}
 
 			// Pets
