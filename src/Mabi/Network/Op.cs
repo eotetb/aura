@@ -672,7 +672,10 @@ namespace Aura.Mabi.Network
 		// Presumably 7 ops were added, in addition to 2 more above,
 		// which shifted UnkEsc?~DcUnkR?.
 
-		public const int UnkEsc = 0xAB01;
+		// [200200, NA252 (2017-04-18)]
+		// 2 ops were added, which shifted UnkEsc~DcUnkR?
+
+		public const int UnkEsc = 0xAB03;
 
 		//public const int GoBeautyShop = 0xAAF8;
 		//public const int GoBeautyShopR = 0xAAF9;
@@ -697,28 +700,37 @@ namespace Aura.Mabi.Network
 		// [200100, NA209 (2016-06-16)]
 		// 5 new ops somewhere here, that shifted BeginnerWarpBook by +5, to ABA8.
 
-		public const int BeginnerWarpBook = 0xABB2; // Added to Aura after ItemMagnet, original op unknown, if different.
+		// Added to Aura after ItemMagnet, original op unknown, if different.
+		// [200200, NA252 (2017-04-18)] Shifted from ABB2 to 0xABB7?
+		// When exactly this happened is unknown.
+		public const int BeginnerWarpBook = 0xABB7;
+
+		// [200200, NA252 (2017-04-18)]
+		// 1 op was added, which shifted ItemMagnet~DcUnkR?
 
 		// ItemMagnet got increased by one, some time between NA200 and NA204.
 		// [200100, NA229 (2016-06-16)] ItemMagnet~AmmoRequired shifted by +4.
 
 		// [190100, NA200 (2015-01-15)] Added
 		// [190200, NA221 (2016-02-17)] Increased by one, ABAC->ABAD
-		public const int ItemMagnet = 0xABBD;
+		public const int ItemMagnet = 0xABC0;
 
 		// [190200, NA221 (2016-02-17)] Added
 		// [200100, NA229 (2016-06-16)] DestroyExpired* increased by four, ABAE->ABB2, ABAF->ABB3, ABB0->ABB4
-		public const int DestroyExpiredItems = 0xABBE;
-		public const int DestroyExpiredItemsConfirm = 0xABBF;
-		public const int DestroyExpiredItemsR = 0xABC0;
+		public const int DestroyExpiredItems = 0xABC1;
+		public const int DestroyExpiredItemsConfirm = 0xABC2;
+		public const int DestroyExpiredItemsR = 0xABC3;
 
 		// [200100, NA229 (2016-04-16)] Shifted by +8, from ABBB to ABC3.
 		// [200200, NA242 (2016-12-15)] Shifted by +2, from ABC3 to ABC5.
-		public const int AmmoRequired = 0xABCF;
+		public const int AmmoRequired = 0xABD2;
 
 		// [200100, NA226 (2016-04-14)] Shifted by 4, from AC0A to AC0E.
 		// [200100, NA229 (2016-06-16)] Shifted by +8, from AC0E to AC16.
-		public const int ChatSticker = 0xAC20;
+		public const int ChatSticker = 0xAC23;
+
+		// [200200, NA252 (2017-04-18)]
+		// 3 ops were added, which shifted DcUnk~DcUnkR?
 
 		// [190200, NA221 (2016-02-17)] Added
 		// DcUnk, purpose unknown, requires answer on disconnect,
@@ -728,8 +740,8 @@ namespace Aura.Mabi.Network
 		// [200100, NA229 (2016-06-16)] Shifted by 5, from AC1A to AC1F.
 		// [200200, NA229 (2016-10-13)] Shifted by 1, from AC1F to AC20.
 		// [200200, NA242 (2016-12-15)] Shifted by 4, from AC20 to AC24.
-		public const int DcUnk = 0xAC2E;
-		public const int DcUnkR = 0xAC2F;
+		public const int DcUnk = 0xAC34;
+		public const int DcUnkR = 0xAC35;
 
 		public const int RebirthEventInfoRequest = 0xAC5E;
 		public const int RebirthEventInfo = 0xAC5F;
@@ -741,6 +753,10 @@ namespace Aura.Mabi.Network
 		public const int SwitchToPureMusicMode = 0xAC8B;
 
 		public const int UnkCharWindow = 0xACAE; // [200200, NA249 (2017-04-13)]
+
+		// [200200, NA252 (2017-05-18)]
+		public const int SkillApTraining = 0xACB8;
+		public const int SkillApTrainingR = 0xACB9;
 
 		public const int NpcTalk = 0x13882;
 		public const int NpcTalkSelect = 0x13883;
