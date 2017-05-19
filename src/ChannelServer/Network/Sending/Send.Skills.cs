@@ -1011,5 +1011,17 @@ namespace Aura.Channel.Network.Sending
 
 			creature.Client.Send(packet);
 		}
+
+		/// <summary>
+		/// Dummy response for SkillApTraining to prevent locking.
+		/// </summary>
+		/// <param name="creature"></param>
+		public static void SkillApTrainingR(Creature creature)
+		{
+			var packet = new Packet(Op.SkillApTrainingR, creature.EntityId);
+			packet.PutByte(false);
+
+			creature.Client.Send(packet);
+		}
 	}
 }
