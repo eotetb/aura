@@ -103,6 +103,14 @@ namespace Aura.Channel.Network.Sending.Helpers
 					packet.PutByte(item.IsNew);
 					packet.PutByte(0);
 				}
+
+				// [200200, NA252 (2017-05-18)]
+				// New long that is equal to the owner's entity id for all
+				// items in the creature info packet. Maybe the id of the
+				// owner?
+				{
+					packet.PutLong(0);
+				}
 			}
 
 			return packet;
