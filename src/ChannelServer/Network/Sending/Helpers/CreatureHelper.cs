@@ -28,8 +28,8 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// Looks/Location
 			// --------------------------------------------------------------
 			packet.PutString(creature.Name);
-			packet.PutString("");				 // Title
-			packet.PutString("");				 // Eng Title
+			packet.PutString("");                // Title
+			packet.PutString("");                // Eng Title
 			packet.PutInt(creature.RaceId);
 			packet.PutByte(creature.SkinColor);
 			packet.PutShort(creature.EyeType); // [180600, NA187 (25.06.2014)] Changed from byte to short
@@ -124,29 +124,30 @@ namespace Aura.Channel.Network.Sending.Helpers
 				packet.PutFloat(creature.RightCriticalMod);
 				packet.PutShort((short)creature.LeftBalanceMod);
 				packet.PutShort((short)creature.RightBalanceMod);
-				packet.PutFloat(0);			         // MagicDefenseMod
-				// [180300, NA166 (18.09.2013)] Magic Protection
+				packet.PutFloat(0);                  // MagicDefenseMod
+													 // [180300, NA166 (18.09.2013)] Magic Protection
 				{
-					packet.PutFloat(0);			     // MagicProtectMod
+					packet.PutFloat(0);              // MagicProtectMod
 				}
-				packet.PutFloat(0);			         // MagicAttackMod
-				packet.PutShort(15);		         // MeleeAttackRateMod
-				packet.PutShort(15);		         // RangeAttackRateMod
+				packet.PutFloat(0);                  // MagicAttackMod
+				packet.PutShort(15);                 // MeleeAttackRateMod
+				packet.PutShort(15);                 // RangeAttackRateMod
 				packet.PutFloat(creature.CriticalBase);
-				packet.PutFloat(0);			         // CriticalMod
+				packet.PutFloat(0);                  // CriticalMod
 				packet.PutFloat((short)creature.ProtectionBase);
 				packet.PutFloat(creature.ProtectionMod);
 				packet.PutShort((short)creature.DefenseBase);
 				packet.PutShort((short)creature.DefenseMod);
 				packet.PutShort((short)creature.BalanceBase);
-				packet.PutShort(0);			         // RateMod
-				packet.PutShort(0);			         // Rank1
-				packet.PutShort(0);			         // Rank2
+				packet.PutShort(0);                  // RateMod
+				packet.PutShort(0);                  // Rank1
+				packet.PutShort(0);                  // Rank2
+
 				// [180300, NA166 (18.09.2013)] Armor Pierce
 				{
-					packet.PutShort(0);			     // ArmorPierceMod
+					packet.PutShort(0);              // ArmorPierceMod
 				}
-				packet.PutLong(0);			         // Score
+				packet.PutLong(0);                   // Score
 				packet.PutShort((short)creature.AttackMinBaseMod);
 				packet.PutShort((short)creature.AttackMaxBaseMod);
 				packet.PutShort((short)creature.InjuryMinBaseMod);
@@ -169,46 +170,47 @@ namespace Aura.Channel.Network.Sending.Helpers
 				packet.PutShort(0);                  // RangeAttackMaxBaseMod (25)
 				packet.PutShort(0);                  // RangeInjuryMinBaseMod
 				packet.PutShort(0);                  // RangeInjuryMaxBaseMod
+
 				// [180100] Guns
 				{
-					packet.PutShort(0);			     // DualgunAttackMinBaseMod
-					packet.PutShort(0);			     // DualgunAttackMaxBaseMod
-					packet.PutShort(0);			     // DualgunInjuryMinBaseMod
-					packet.PutShort(0);			     // DualgunInjuryMaxBaseMod
+					packet.PutShort(0);              // DualgunAttackMinBaseMod
+					packet.PutShort(0);              // DualgunAttackMaxBaseMod
+					packet.PutShort(0);              // DualgunInjuryMinBaseMod
+					packet.PutShort(0);              // DualgunInjuryMaxBaseMod
 				}
 				// [180800, NA189 (23.07.2014)] Ninja?
 				{
-					packet.PutShort(0);			     // ? AttackMinBaseMod
-					packet.PutShort(0);			     // ? AttackMaxBaseMod
-					packet.PutShort(0);			     // ? InjuryMinBaseMod
-					packet.PutShort(0);			     // ? InjuryMaxBaseMod
+					packet.PutShort(0);              // ? AttackMinBaseMod
+					packet.PutShort(0);              // ? AttackMaxBaseMod
+					packet.PutShort(0);              // ? InjuryMinBaseMod
+					packet.PutShort(0);              // ? InjuryMaxBaseMod
 				}
-				packet.PutShort(0);			         // PoisonBase
-				packet.PutShort(0);			         // PoisonMod
-				packet.PutShort(67);		         // PoisonImmuneBase
-				packet.PutShort(0);			         // PoisonImmuneMod
-				packet.PutFloat(0.5f);		         // PoisonDamageRatio1
-				packet.PutFloat(0);			         // PoisonDamageRatio2
+				packet.PutShort(0);                  // PoisonBase
+				packet.PutShort(0);                  // PoisonMod
+				packet.PutShort(67);                 // PoisonImmuneBase
+				packet.PutShort(0);                  // PoisonImmuneMod
+				packet.PutFloat(0.5f);               // PoisonDamageRatio1
+				packet.PutFloat(0);                  // PoisonDamageRatio2
 				packet.PutFloat(creature.ToxicStr);
 				packet.PutFloat(creature.ToxicInt);
 				packet.PutFloat(creature.ToxicDex);
 				packet.PutFloat(creature.ToxicWill);
 				packet.PutFloat(creature.ToxicLuck);
 				packet.PutString(creature.LastTown);
-				packet.PutShort(1);					 // ExploLevel
-				packet.PutShort(0);					 // ExploMaxKeyLevel
-				packet.PutInt(0);					 // ExploCumLevel
-				packet.PutLong(0);					 // ExploExp
-				packet.PutInt(0);					 // DiscoverCount
-				packet.PutFloat(0);					 // conditionStr
-				packet.PutFloat(0);					 // conditionInt
-				packet.PutFloat(0);					 // conditionDex
-				packet.PutFloat(0);					 // conditionWill
-				packet.PutFloat(0);					 // conditionLuck
-				packet.PutByte(9);					 // ElementPhysical
-				packet.PutByte(0);					 // ElementLightning
-				packet.PutByte(0);					 // ElementFire
-				packet.PutByte(0);					 // ElementIce
+				packet.PutShort(1);                  // ExploLevel
+				packet.PutShort(0);                  // ExploMaxKeyLevel
+				packet.PutInt(0);                    // ExploCumLevel
+				packet.PutLong(0);                   // ExploExp
+				packet.PutInt(0);                    // DiscoverCount
+				packet.PutFloat(0);                  // conditionStr
+				packet.PutFloat(0);                  // conditionInt
+				packet.PutFloat(0);                  // conditionDex
+				packet.PutFloat(0);                  // conditionWill
+				packet.PutFloat(0);                  // conditionLuck
+				packet.PutByte(9);                   // ElementPhysical
+				packet.PutByte(0);                   // ElementLightning
+				packet.PutByte(0);                   // ElementFire
+				packet.PutByte(0);                   // ElementIce
 
 				// [200200, NA247 (2017-03-17)] ?
 				{
@@ -309,19 +311,19 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Private)
 			{
-				packet.PutLong(0);					 // MateID
-				packet.PutString("");				 // MateName
-				packet.PutLong(0);					 // MarriageTime
-				packet.PutShort(0);					 // MarriageCount
+				packet.PutLong(0);                   // MateID
+				packet.PutString("");                // MateName
+				packet.PutLong(0);                   // MarriageTime
+				packet.PutShort(0);                  // MarriageCount
 			}
 			else if (type == CreaturePacketType.Public)
 			{
-				packet.PutString("");				 // MateName
+				packet.PutString("");                // MateName
 			}
 
 			// Destiny
 			// --------------------------------------------------------------
-			packet.PutByte(0);			             // (0:Venturer, 1:Knight, 2:Wizard, 3:Bard, 4:Merchant, 5:Alchemist)
+			packet.PutByte(0);                       // (0:Venturer, 1:Knight, 2:Wizard, 3:Bard, 4:Merchant, 5:Alchemist)
 
 			// Inventory
 			// --------------------------------------------------------------
@@ -378,16 +380,18 @@ namespace Aura.Channel.Network.Sending.Helpers
 				packet.PutShort((short)skills.Count);
 				foreach (var skill in skills)
 					packet.PutBin(skill.Info);
-				packet.PutInt(0);			     // SkillVarBufferList
+
+				// SkillVarBufferList
+				packet.PutInt(0);
 				// loop						         
 				//   packet.PutInt
 				//   packet.PutFloat
 			}
 			else if (type == CreaturePacketType.Public)
 			{
-				packet.PutShort(0);			     // CurrentSkill
-				packet.PutByte(0);			     // SkillStackCount
-				packet.PutInt(0);			     // SkillProgress
+				packet.PutShort(0);              // CurrentSkill
+				packet.PutByte(0);               // SkillStackCount
+				packet.PutInt(0);                // SkillProgress
 
 				// Wrong?
 				//packet.PutInt(0);			     // SkillSyncList
@@ -410,7 +414,7 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 			// [150100] ?
 			{
-				packet.PutByte(0);			     // {PLGCNT}
+				packet.PutByte(0);               // {PLGCNT}
 			}
 
 			// [190200, NA203 (24.04.2015)] ?
@@ -495,7 +499,7 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Private)
 			{
-				packet.PutLong(0);				     // ArbeitID
+				packet.PutLong(0);                   // ArbeitID
 
 				var records = creature.Quests.GetPtjTrackRecords();
 				packet.PutInt(records.Length);
@@ -515,7 +519,7 @@ namespace Aura.Channel.Network.Sending.Helpers
 				{
 					packet.PutLong(creature.Master.EntityId);
 					packet.PutByte((byte)SubordinateType.Pet);
-					packet.PutByte(0);				 // SubType
+					packet.PutByte(0);               // SubType
 				}
 				else if (creature.IsRpCharacter)
 				{
@@ -542,9 +546,9 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 			// Transformation
 			// --------------------------------------------------------------
-			packet.PutByte(0);				     // Type (1:Paladin, 2:DarkKnight, 3:SubraceTransformed, 4:TransformedElf, 5:TransformedGiant)
-			packet.PutShort(0);				     // Level
-			packet.PutShort(0);				     // SubType
+			packet.PutByte(0);                   // Type (1:Paladin, 2:DarkKnight, 3:SubraceTransformed, 4:TransformedElf, 5:TransformedGiant)
+			packet.PutShort(0);                  // Level
+			packet.PutShort(0);                  // SubType
 
 			// Pet
 			// --------------------------------------------------------------
@@ -554,22 +558,22 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 				if (type == CreaturePacketType.Private)
 				{
-					packet.PutInt(2000000000);			// RemainingSummonTime
-					packet.PutLong(0);					// LastSummonTime
-					packet.PutLong(0);					// PetExpireTime
-					packet.PutByte(0);					// Loyalty
-					packet.PutByte(0);					// Favor
-					packet.PutLong(DateTime.Now);		// SummonTime
-					packet.PutByte(0);					// KeepingMode
-					packet.PutLong(0);					// KeepingProp
+					packet.PutInt(2000000000);          // RemainingSummonTime
+					packet.PutLong(0);                  // LastSummonTime
+					packet.PutLong(0);                  // PetExpireTime
+					packet.PutByte(0);                  // Loyalty
+					packet.PutByte(0);                  // Favor
+					packet.PutLong(DateTime.Now);       // SummonTime
+					packet.PutByte(0);                  // KeepingMode
+					packet.PutLong(0);                  // KeepingProp
 					packet.PutLong(creature.Master.EntityId);
-					packet.PutByte(0);					// PetSealCount {PSCNT}
+					packet.PutByte(0);                  // PetSealCount {PSCNT}
 				}
 				else if (type == CreaturePacketType.Public)
 				{
 					packet.PutLong(creature.Master.EntityId);
-					packet.PutByte(0);				 // KeepingMode
-					packet.PutLong(0);				 // KeepingProp
+					packet.PutByte(0);               // KeepingMode
+					packet.PutLong(0);               // KeepingProp
 				}
 			}
 			else
@@ -600,41 +604,42 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// House
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Private)
-				packet.PutLong(0);				 // HouseID
+				packet.PutLong(0);               // HouseID
 
 			// Taming
 			// --------------------------------------------------------------
-			packet.PutLong(0);					 // MasterID
-			packet.PutByte(0);					 // IsTamed
-			packet.PutByte(0);					 // TamedType (1:DarkKnightTamed, 2:InstrumentTamed, 3:AnimalTraining, 4:MercenaryTamed, 5:Recalled, 6:SoulStoneTamed, 7:TamedFriend)
-			packet.PutByte(1);					 // IsMasterMode
-			packet.PutInt(0);					 // LimitTime
+			packet.PutLong(0);                   // MasterID
+			packet.PutByte(0);                   // IsTamed
+			packet.PutByte(0);                   // TamedType (1:DarkKnightTamed, 2:InstrumentTamed, 3:AnimalTraining, 4:MercenaryTamed, 5:Recalled, 6:SoulStoneTamed, 7:TamedFriend)
+			packet.PutByte(1);                   // IsMasterMode
+			packet.PutInt(0);                    // LimitTime
 
 			// Vehicle
 			// --------------------------------------------------------------
-			packet.PutInt(0);					 // Type
-			packet.PutInt(0);					 // TypeFlag (0x1:Driver, 0x4:Owner)
-			packet.PutLong(0);					 // VehicleId
-			packet.PutInt(0);					 // SeatIndex
-			packet.PutByte(0);					 // PassengerList
-			// loop
-			//   packet.PutLong
+			packet.PutInt(0);                    // Type
+			packet.PutInt(0);                    // TypeFlag (0x1:Driver, 0x4:Owner)
+			packet.PutLong(0);                   // VehicleId
+			packet.PutInt(0);                    // SeatIndex
+			packet.PutByte(0);                   // PassengerList
+												 // loop
+												 //   packet.PutLong
 
 			// Showdown
 			// --------------------------------------------------------------
-			packet.PutInt(0);	                 // unknown at 0x18
+			packet.PutInt(0);                    // unknown at 0x18
 			packet.PutLong(0);                   // unknown at 0x08
-			packet.PutLong(0);	                 // unknown at 0x10
-			packet.PutByte(1);	                 // IsPartyPvpDropout
+			packet.PutLong(0);                   // unknown at 0x10
+			packet.PutByte(1);                   // IsPartyPvpDropout
 
 			// Transport
 			// --------------------------------------------------------------
-			packet.PutLong(0);					 // TransportID
-			packet.PutInt(0);					 // HuntPoint
+			packet.PutLong(0);                   // TransportID
+			packet.PutInt(0);                    // HuntPoint
 
 			// Aviation
 			// --------------------------------------------------------------
-			packet.PutByte(0); // --v
+			packet.PutByte(0);// --v
+
 			//packet.PutByte(creature.IsFlying);
 			//if (creature.IsFlying)
 			//{
@@ -649,7 +654,8 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 			// Skiing
 			// --------------------------------------------------------------
-			packet.PutByte(0);					 // IsSkiing
+			packet.PutByte(0);                   // IsSkiing
+
 			// loop
 			//   packet.PutFloat
 			//   packet.PutFloat
@@ -665,7 +671,8 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Private)
 			{
-				packet.PutLong(0);					 // FarmId
+				packet.PutLong(0);                   // FarmId
+
 				//   packet.PutLong
 				//   packet.PutLong
 				//   packet.PutLong
@@ -683,8 +690,9 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 			// Event (CaptureTheFlag, WaterBalloonBattle)
 			// --------------------------------------------------------------
-			packet.PutByte(0);				     // EventFullSuitIndex
-			packet.PutByte(0);				     // TeamId
+			packet.PutByte(0);                   // EventFullSuitIndex
+			packet.PutByte(0);                   // TeamId
+
 			// if?
 			//   packet.PutInt					 // HitPoint
 			//   packet.PutInt					 // MaxHitPoint
@@ -705,33 +713,34 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 			// Joust
 			// --------------------------------------------------------------
-			packet.PutInt(0);					 // JoustId
+			packet.PutInt(0);                    // JoustId
 			if (type == CreaturePacketType.Private)
 			{
-				packet.PutInt(0);					 // JoustPoint
-				packet.PutByte(0);					 // unknown at 0x1D
-				packet.PutByte(0);					 // unknown at 0x1C
-				packet.PutByte(0);					 // WeekWinCount
-				packet.PutShort(0);					 // DailyWinCount
-				packet.PutShort(0);					 // DailyLoseCount
-				packet.PutShort(0);					 // ServerWinCount
-				packet.PutShort(0);					 // ServerLoseCount
+				packet.PutInt(0);                    // JoustPoint
+				packet.PutByte(0);                   // unknown at 0x1D
+				packet.PutByte(0);                   // unknown at 0x1C
+				packet.PutByte(0);                   // WeekWinCount
+				packet.PutShort(0);                  // DailyWinCount
+				packet.PutShort(0);                  // DailyLoseCount
+				packet.PutShort(0);                  // ServerWinCount
+				packet.PutShort(0);                  // ServerLoseCount
 			}
 			else if (type == CreaturePacketType.Public)
 			{
-				packet.PutLong(0);			         // HorseId
-				packet.PutFloat(0);	                 // Life
-				packet.PutInt(100);		             // LifeMax
-				packet.PutByte(9);			         // unknown at 0x6C
-				packet.PutByte(0);			         // IsJousting
+				packet.PutLong(0);                   // HorseId
+				packet.PutFloat(0);                  // Life
+				packet.PutInt(100);                  // LifeMax
+				packet.PutByte(9);                   // unknown at 0x6C
+				packet.PutByte(0);                   // IsJousting
 			}
 
 			// Achievements
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Private)
 			{
-				packet.PutInt(0);	                 // TotalScore
+				packet.PutInt(0);                    // TotalScore
 				packet.PutShort(0);                  // AchievementList
+
 				// loop
 				//   packet.PutShort achievementId
 			}
@@ -740,7 +749,8 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Private)
 			{
-				packet.PutInt(0);					 // FavoriteFarmList
+				packet.PutInt(0);                    // FavoriteFarmList
+
 				// loop
 				//   packet.PutLong                  // FarmId
 				//   packet.PutInt                   // ZoneId
@@ -752,7 +762,8 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 			// Family
 			// --------------------------------------------------------------
-			packet.PutLong(0);					 // FamilyId
+			packet.PutLong(0);                   // FamilyId
+
 			// if
 			//   packet.PutString				 // FamilyName
 			//   packet.PutShort
@@ -764,15 +775,15 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Private)
 			{
-				packet.PutInt(0);					 // SupportType (0:None, 1:Neamhain, 2:Morrighan)
+				packet.PutInt(0);                    // SupportType (0:None, 1:Neamhain, 2:Morrighan)
 			}
 
 			// [150100] NPC options
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Public && creature is NPC)
 			{
-				packet.PutShort(0);		         // OnlyShowFilter
-				packet.PutShort(0);		         // HideFilter
+				packet.PutShort(0);              // OnlyShowFilter
+				packet.PutShort(0);              // HideFilter
 			}
 
 			// [150100] Commerce
@@ -796,6 +807,7 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 					packet.PutShort(0); // --v
 					packet.PutByte(0);  // --v
+
 					//packet.PutShort((ushort)creature.Talents.SelectedTitle);
 					//packet.PutByte((byte)creature.Talents.Grandmaster);
 				}
@@ -812,6 +824,7 @@ namespace Aura.Channel.Network.Sending.Helpers
 				{
 					// Transformation Diary
 					packet.PutInt(0); // --v
+
 					//packet.PutSInt(character.Shamalas.Count);
 					//foreach (var trans in character.Shamalas)
 					//{
@@ -914,16 +927,17 @@ namespace Aura.Channel.Network.Sending.Helpers
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Public)
 			{
-				packet.PutLong(0);			         // AimingTarget
-				packet.PutLong(0);			         // Executor
-				packet.PutShort(0);			         // ReviveTypeList
+				packet.PutLong(0);                   // AimingTarget
+				packet.PutLong(0);                   // Executor
+				packet.PutShort(0);                  // ReviveTypeList
+
 				// loop						         
 				//   packet.PutInt	
 
 				// < int g18 monsters?
 			}
 
-			packet.PutByte(0);					 // IsGhost
+			packet.PutByte(0);                   // IsGhost
 
 			// SittingProp
 			if (creature.Temp.SittingProp == null)
@@ -931,14 +945,19 @@ namespace Aura.Channel.Network.Sending.Helpers
 			else
 				packet.PutLong(creature.Temp.SittingProp.EntityId);
 
-			packet.PutInt(-1);					 // SittedSocialMotionId
+			// [200200, NA252 (2017-05-18)] ?
+			{
+				packet.PutInt(0);
+			}
+
+			packet.PutInt(-1);                   // SittedSocialMotionId
 
 			// ? (Last Part of public, except for something at the very end)
 			// --------------------------------------------------------------
 			if (type == CreaturePacketType.Public)
 			{
-				packet.PutLong(0);			         // DoubleGoreTarget (Doppelganger condition)
-				packet.PutInt(0);			         // DoubleGoreTargetType
+				packet.PutLong(0);                   // DoubleGoreTarget (Doppelganger condition)
+				packet.PutInt(0);                    // DoubleGoreTargetType
 
 				// [180300, NA169 (23.10.2013)] ?
 				{
@@ -965,7 +984,7 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 				// [150100] Bomb Event
 				{
-					packet.PutByte(0);			     // BombEventState
+					packet.PutByte(0);               // BombEventState
 				}
 
 				// [170400] ?
@@ -1019,6 +1038,7 @@ namespace Aura.Channel.Network.Sending.Helpers
 				}
 				packet.PutByte(0);
 				packet.PutByte(true);                                            // Setting this to false affects the packet structure in an unknown way
+
 				// [200200, NA242 (2016-12-15)] ?
 				{
 					packet.PutLong(0);
@@ -1026,13 +1046,20 @@ namespace Aura.Channel.Network.Sending.Helpers
 					packet.PutByte(0);
 					packet.PutByte(false);                                       // Enables "Pure Music Mode" button above head
 				}
+
+				// [200200, NA252 (2017-05-18)] ?
+				{
+					packet.PutInt(0);
+					packet.PutInt(0);
+				}
+
 				packet.PutByte(false);                                            // Bags, Account Bank
 				packet.PutByte(false);
 				packet.PutByte(false);
 				packet.PutByte(false);                                           // ? (Default 1 on NA?)
 				packet.PutByte(account.PremiumServices.HasInventoryPlusService); // Bags, Account Bank
 				packet.PutByte(account.PremiumServices.HasVipService);           // Bags, Account Bank, Premium Gestures, VIP tab
-				// [170402, TW170300] ?
+																				 // [170402, TW170300] ?
 				{
 					packet.PutByte(false);                                       // Bags, Account Bank, Premium Gestures, VIP tab
 				}
@@ -1060,7 +1087,7 @@ namespace Aura.Channel.Network.Sending.Helpers
 
 				// Char
 				// --------------------------------------------------------------
-				packet.PutByte(0);					 // NaoDress (0:normal, 12:??, 13:??)
+				packet.PutByte(0);                   // NaoDress (0:normal, 12:??, 13:??)
 				packet.PutLong(creature.CreationTime);
 				packet.PutLong(creature.LastRebirth);
 				packet.PutString("");
