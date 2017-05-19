@@ -826,5 +826,20 @@ namespace Aura.Channel.Network.Handlers
 			else
 				Log.Warning("ProductionSuccessRequest: Unknown packet structure.");
 		}
+
+		/// <summary>
+		/// Set when trying to train a skill with AP. (Dummy handler)
+		/// </summary>
+		/// <example>
+		/// No parameters.
+		/// </example>
+		[PacketHandler(Op.SkillApTraining)]
+		public void SkillApTraining(ChannelClient client, Packet packet)
+		{
+			var creature = client.GetCreatureSafe(packet.Id);
+
+			Send.MsgBox(creature, Localization.Get("Not supported yet."));
+			Send.SkillApTrainingR(creature);
+		}
 	}
 }
