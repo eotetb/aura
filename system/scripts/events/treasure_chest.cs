@@ -31,7 +31,7 @@ public class TreasureChestEventScript : GameEventScript
 
 	public override void AfterLoad()
 	{
-		ScheduleEvent(DateTime.Parse("2009-04-30 00:00"), DateTime.Parse("2009-05-08 00:00"));
+		ScheduleEvent(DateTime.Parse("2017-01-01 00:00"), DateTime.Parse("2018-01-01 00:00"));
 	}
 
 	protected override void OnStart()

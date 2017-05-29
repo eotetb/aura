@@ -15,7 +15,7 @@ public class TrippleMonsterExpEventScript : GameEventScript
 
 	public override void AfterLoad()
 	{
-		ScheduleEvent(DateTime.Parse("2013-12-20 00:00"), DateTime.Parse("2014-01-07 00:00"));
+		ScheduleEvent(DateTime.Parse("2017-01-01 00:00"), DateTime.Parse("2018-01-01 00:00"));
 	}
 
 	protected override void OnStart()
