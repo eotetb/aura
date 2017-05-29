@@ -19,7 +19,7 @@ public class CostumeFishingEventScript : GameEventScript
 
 	public override void AfterLoad()
 	{
-		ScheduleEvent(DateTime.Parse("2013-06-05 00:00"), DateTime.Parse("2013-06-26 00:00"));
+		ScheduleEvent(DateTime.Parse("2017-01-01 00:00"), DateTime.Parse("2018-01-01 00:00"));
 	}
 
 	protected override void OnStart()

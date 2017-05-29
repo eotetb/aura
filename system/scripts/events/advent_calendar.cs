@@ -18,7 +18,7 @@ public class AdventCalendarEventScript : GameEventScript
 
 	public override void AfterLoad()
 	{
-		//ScheduleEvent(DateTime.Parse("2016-12-01 00:00"), DateTime.Parse("2016-12-25 00:00"));
+		ScheduleEvent(DateTime.Parse("2017-01-01 00:00"), DateTime.Parse("2018-01-01 00:00"));
 	}
 
 	protected override void OnStart()
